@@ -66,15 +66,33 @@ s.n. dasgupta
 cmp file1 file2
 ## OUTPUT
  ```
-anil aggarwal
+file1 file2 differ: byte 1, line 1
 ```
 comm file1 file2
  ## OUTPUT
+```
+anil aggarwal
+      barun sengupta
+      c.k. shukla
+chanchal singhvi
+c.k. shukla
+      lalit chowdury
+              s.n. dasgupta
+sumit chakrobarty
 
+```
  
 diff file1 file2
 ## OUTPUT
+```
+anil aggarwal
+barun sengupta
+2a4
+   lalit chowdury
+4d5
+sumit chakrobarty
 
+```
 
 #Filters
 
@@ -97,18 +115,34 @@ cat > file22
 
 cut -c1-3 file11
 ## OUTPUT
-
-
-
+```
+Hel
+Thi
+^d
+```
 
 cut -d "|" -f 1 file22
 ## OUTPUT
-
-
-
+```
+1001
+1002
+1003
+^d
+```
 cut -d "|" -f 2 file22
 ## OUTPUT
+```
+Ram
+tom
+Joe
+^d
+```
 
+cat > newfile 
+```
+Hello world
+hello world
+```
 
 cat < newfile 
 ```
@@ -116,47 +150,47 @@ Hello world
 hello world
 ^d
 ````
-cat > newfile 
-Hello world
-hello world
  
 grep Hello newfile 
 ## OUTPUT
-
-
+```
+Hello world
+```
 
 grep hello newfile 
 ## OUTPUT
-
-
-
+```
+hello world
+```
 
 grep -v hello newfile 
 ## OUTPUT
-
-
+```
+Hello world
+```
 
 cat newfile | grep -i "hello"
 ## OUTPUT
-
-
-
+```
+Hello world
+hello world
+```
 
 cat newfile | grep -i -c "hello"
 ## OUTPUT
-
-
-
-
+```
+2
+```
 grep -R ubuntu /etc
 ## OUTPUT
 
-
-
 grep -w -n world newfile   
 ## OUTPUT
-
-
+```
+1:Hello world
+2:hello world
+3.Linux is world number 1
+```
 cat < newfile 
 ```
 Hello world
@@ -178,60 +212,81 @@ Linux is best in this World
  ```
 egrep -w 'Hello|hello' newfile 
 ## OUTPUT
-
-
+```
+Hello world
+hello world
+```
 
 egrep -w '(H|h)ello' newfile 
 ## OUTPUT
-
-
+```
+Hello world
+hello world
+```
 
 egrep -w '(H|h)ell[a-z]' newfile 
 ## OUTPUT
-
-
-
+```
+Hello world
+hello world
+```
 
 egrep '(^hello)' newfile 
 ## OUTPUT
-
-
-
+```
+hello world
+```
 egrep '(world$)' newfile 
 ## OUTPUT
-
-
-
+```
+Hello world
+hello world
+```
 egrep '(World$)' newfile 
 ## OUTPUT
-
-
+```
+Linux is best in this world
+```
 egrep '((W|w)orld$)' newfile 
 ## OUTPUT
-
-
+```
+Hello world
+hello world
+Linux is best in this world
+```
 
 egrep '[1-9]' newfile 
 ## OUTPUT
-
-
+```
+Linux is best in this world
+```
 
 egrep 'Linux.*world' newfile 
 ## OUTPUT
-
+```
+Linux is best in this world
+```
 
 egrep 'Linux.*World' newfile 
 ## OUTPUT
-
+```
+Linux is best in this world
+```
 
 egrep l{2} newfile
 ## OUTPUT
-
-
+```
+Hello world
+hello world
+```
 
 egrep 's{1,2}' newfile
 ## OUTPUT 
-
+```
+Linux is world number 1
+Unix is predecessor
+Linux is best in this world
+```
 
 cat > file23
 ```
@@ -246,52 +301,87 @@ cat > file23
 ^d
 ```
 
-
 sed -n -e '3p' file23
 ## OUTPUT
-
-
+```
+1002 | tom |  5000 | Admin
+```
 
 sed -n -e '$p' file23
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+```
 sed  -e 's/Ram/Sita/' file23
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
+^d
+```
 
 sed  -e '2s/Ram/Sita/' file23
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
+^d
+```
 
 sed  '/tom/s/5000/6000/' file23
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
+^d
+```
 
 sed -n -e '1,5p' file23
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+```
 sed -n -e '2,/Joe/p' file23
 ## OUTPUT
-
-
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+```
 sed -n -e '/tom/,/Joe/p' file23
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+```
 
 seq 10 
 ## OUTPUT
 
-
+from this continue
 
 seq 10 | sed -n '4,6p'
 ## OUTPUT

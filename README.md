@@ -592,17 +592,7 @@ chmod 777 scriptest.sh
 
 ## OUTPUT
 ```
-File name is ./scriptest.sh File name is scriptest.sh First arg. is 1 Second arg. is 2 Third arg. is 3 Fourth arg. is The 
-@
-i
-s
-1
-2
-3
-T
-h
-e
-# is 
+File name is ./scriptest.sh File name is scriptest.sh First arg. is 1 Second arg. is 2 Third arg. is 3 Fourth arg. is The  
 You can't use 'macro parameter character #' in math mode
 $#
 The $$ is 124
